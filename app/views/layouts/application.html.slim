@@ -1,0 +1,36 @@
+doctype html
+html
+	head
+		title Planning a Greater Greater Lansing
+		= stylesheet_link_tag    'application', media: 'all'
+		= javascript_include_tag 'application'
+		= csrf_meta_tags
+
+body
+	.navbar.navbar-default
+		.container
+			.navbar-header
+				button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				= link_to "Planning a Greater Greater Lansing", root_path, class: "navbar-brand"
+			.navbar-collapse.collapse.navbar-right
+				ul.nav.navbar-nav
+					li.active
+						= link_to "HOME", root_path
+					- if user_signed_in?
+						li= link_to current_user.email, edit_user_registration_path
+						li= link_to "SIGN OUT", destroy_user_session_path, method: :delete
+					- else
+						li= link_to "SIGN UP", new_user_registration_path
+						li= link_to "SIGN IN", new_user_session_path
+
+	.container
+		.row
+			.col-md-12
+				p.notice= notice
+				p.alert= alert
+
+	= yield
