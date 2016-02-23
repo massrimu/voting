@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-<h1>Listing Books</h1>
+<h1>Useful Books</h1>
 
 <table>
   <thead>
@@ -21,6 +21,11 @@
         <td><%= book.author %></td>
         <td><%= book.description %></td>
         <td><%= book.image %></td>
+        <% if book.image.exists? %>
+          <td>  <%= link_to (image_tag book.image.url(:thumb), class: 'img-responsive img-thumbnail') %></td>
+            <% else %>
+          <td>  <%= image_tag 'default_avatar.jpg', class: 'img-circle img-thumbnail', width: '100' %></td>
+            <% end %>
         <td><%= book.webpage %></td>
         <td><%= link_to 'Show', book %></td>
         <% if user_signed_in? %>
@@ -28,7 +33,7 @@
               <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% else %>
           <%= link_to 'New Book', new_book_path %>
-         <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
