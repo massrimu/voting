@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :author %><br>
     <%= f.text_field :author %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
-  <div class ="field">
+  <div class ="form-group">
     Add Your <%= f.label :image %>:
     <%= f.file_field :image %>
     </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :webpage %><br>
     <%= f.text_field :webpage %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>

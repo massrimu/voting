@@ -3,6 +3,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+   <% if @book.image.exists? %>
+        <%= link_to (image_tag @book.image.url(:thumb), class: 'img-responsive img-thumbnail') %>
+      <% else %>
+        <%= image_tag 'default_avatar.jpg', class: 'img-circle img-thumbnail', width: '100' %>
+    <% end %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @book.title %>
 </p>
@@ -18,13 +26,7 @@
 </p>
 
 <p>
-  <strong>Image:</strong>
-  <%= @book.image %>
-</p>
-
-<p>
-  <strong>Webpage:</strong>
-  <%= @book.webpage %>
+  <%= link_to 'More Information', @book.webpage %>
 </p>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
