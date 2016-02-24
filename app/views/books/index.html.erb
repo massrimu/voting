@@ -1,44 +1,32 @@
-<p id="notice"><%= notice %></p>
-<div class="container">
+<div class="container-fluid">
 <h1>Useful Books</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Description</th>
-      <th>Image</th>
-      <th>Webpage</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @books.each do |book| %>
-      <tr>
-        <td><%= book.title %></td>
-        <td><%= book.author %></td>
-        <td><%= book.description %></td>
-        <td><%= book.image %></td>
+    <div class="row-fluid">
+      <div class="col-md-2">
         <% if book.image.exists? %>
-          <td>  <%= link_to (image_tag book.image.url(:thumb), class: 'img-responsive img-thumbnail') %></td>
+           <%= link_to (image_tag book.image.url(:thumb), class: 'img-responsive img-thumbnail') %>
             <% else %>
-          <td>  <%= image_tag 'default_avatar.jpg', class: 'img-circle img-thumbnail', width: '100' %></td>
-            <% end %>
-        <td><%= book.webpage %></td>
-        <td><%= link_to 'Show', book %></td>
-        <% if user_signed_in? %>
-              <td><%= link_to 'Edit', edit_book_path(book) %></td>
-              <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% else %>
-          <%= link_to 'New Book', new_book_path %>
+            <%= image_tag 'default_avatar.jpg', class: 'img-circle img-thumbnail', width: '100' %>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </div>
 
+      <div class="col-md-4">
+        <%= book.title %>
+      </div>
+
+      <div class="col-md-4">
+        <%= book.description %>
+      </div>
+
+      <%= link_to 'Show', book %>
+      <% if user_signed_in? %>
+          <%= link_to 'Edit', edit_book_path(book) %>
+          <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 <br>
 <% if user_signed_in? %>
   <%= link_to 'New Book', new_book_path %>
