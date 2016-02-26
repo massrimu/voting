@@ -1,7 +1,7 @@
-# RailsJumpStart
+# Planning a Greater Greater Lansing
 Jump Start a Rails App developement. Fork this. Rails + Devise + Paperclip setup.
 
-# Pre-installed Gems
+# This is built on RailsJumpStart. Pre-installed Gems:
 
 ```
 gem 'devise'
@@ -13,4 +13,24 @@ gem 'simple_form'
 
 Paperclip is installed and pre-configured to upload avatar for users.
 
-Clone this repo, and use as you wish.
+Steps to implement:
+
+git clone https://github.com/jmonberg/planning.git
+
+cd planning
+
+bundle install
+
+rake db:migrate
+
+add config.secret_key = 'value' to db/initializers/devise.rb
+
+get the config/secrets.yml file
+
+rails generate simple_form:installr
+
+
+
+
+
+
