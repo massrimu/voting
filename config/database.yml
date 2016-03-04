@@ -21,6 +21,6 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: mysql
+  adapter: sqlite3
   pool: 5
   timeout: 5000
