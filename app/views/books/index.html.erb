@@ -1,29 +1,30 @@
 <div class="container">
   <h1>Useful Books</h1>
+  <div class="row">
+    <% @books.each do |book| %>
 
-  <div class="center">
+    <div class="col-md-4">
 
-    <div class="row">
-      <% @books.each do |book| %>
-      <div class="col-md-6">
-        <div class="thumbnail">
-          <% if book.image.exists? %>
-             <%= link_to (image_tag book.image.url(:thumb), class: 'img-responsive img-thumbnail') %>
-          <% end %>
+      <div class="thumbnail">
+        <% if book.image.exists? %>
+            <%= link_to (image_tag book.image.url(:thumb), class: 'img-responsive img-thumbnail') %>
+        <% end %>
+        <%= link_to book.title, book %>
+        <br>
+        <% if user_signed_in? %>
+            <%= link_to 'Edit', edit_book_path(book) %>
+            <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link"  %>
+        <% end %>
 
-        <div class="caption">
-          <%= link_to book.title, book %>
-          <% if user_signed_in? %>
-              <%= link_to 'Edit', edit_book_path(book) %>
-              <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link"  %>
-          <% end %>
-        </div>
       </div>
-      <% end %>
+
+    </div>
+    <% end %>
+
   </div>
-</div>
-</div>
+
 <% if user_signed_in? %>
   <%= link_to 'New Book', new_book_path, class: "btn btn-link" %>
 <% end %>
+
 </div>
