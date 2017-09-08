@@ -21,10 +21,7 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: mysql
-  encoding: utf8
-  reconnect: false
-  database: planning
+  adapter: sqlite3
+  database: db/production.sqlite3
   pool: 5
-  username: planning
-  password: viusyors1ovA
+  timeout: 5000
