@@ -16,7 +16,7 @@
       <tr>
         <td><%= project.title %></td>
         <td> <% if project.image.exists? %>
-           <%= link_to (image_tag project.image.url(:thumb), class: 'img-responsive img-thumbnail') %>
+           <%= link_to (image_tag project.image.url(:medium), class: 'img-responsive img-medium') %>
         <% end %>
         </td>
         <td><%= link_to 'More Information', project %>

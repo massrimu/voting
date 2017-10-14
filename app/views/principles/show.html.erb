@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @principle.title %>
+</p>
+
+<p>
+   <% if @principle.image.exists? %>
+        <%= link_to (image_tag @principle.image.url(:medium), class: 'img-responsive img-medium') %>
+    <% end %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @principle.author %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @principle.description %>
+</p>
+
+<p>
+  <strong>Casestudy:</strong>
+  <%= @principle.casestudy %>
+</p>
+
+<p>
+  <strong>Case webpage:</strong>
+  <%= @principle.case_webpage %>
+</p>
+
+<% if user_signed_in? %>
+    <%= link_to 'Edit Principle', edit_principle_path(@principle) %>
+<% end %>
+
+<%= link_to 'Back', principles_path %>
