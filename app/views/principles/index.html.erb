@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <h1>Great City Principles</h1>
+  <div class="row">
+    <% @principles.each do |principle| %>
+
+    <div class="col-md-4">
+
+      <div class="thumbnail">
+        <% if principle.image.exists? %>
+            <%= link_to (image_tag principle.image.url(:thumb), class: 'img-responsive img-thumbnail') %>
+        <% end %>
+        <%= link_to principle.title, principle %>
+        <br>
+        <% if user_signed_in? %>
+            <%= link_to 'Edit', edit_principle_path(principle) %>
+            <%= link_to 'Destroy', principle, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link"  %>
+        <% end %>
+
+      </div>
+
+    </div>
+    <% end %>
+
+  </div>
+
+<% if user_signed_in? %>
+  <%= link_to 'New Principle', new_principle_path, class: "btn btn-link" %>
+<% end %>
+
+</div>
+
