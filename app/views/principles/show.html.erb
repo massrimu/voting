@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @principle.title %>
+  <h2><%= @principle.title %></h2>
 </p>
 
 <p>
@@ -15,20 +14,12 @@
   <strong>Author:</strong>
   <%= @principle.author %>
 </p>
-
 <p>
-  <strong>Description:</strong>
-  <%= @principle.description %>
+  <%= simple_format(@principle.description) %>
 </p>
 
 <p>
-  <strong>Casestudy:</strong>
-  <%= @principle.casestudy %>
-</p>
-
-<p>
-  <strong>Case webpage:</strong>
-  <%= @principle.case_webpage %>
+  An example of this principle at work: <%= link_to @principle.casestudy, @principle.case_webpage %>
 </p>
 
 <% if user_signed_in? %>

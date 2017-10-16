@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171014220210) do
+ActiveRecord::Schema.define(version: 20171015234632) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
     t.string   "author"
-    t.string   "description"
+    t.text     "description"
     t.string   "image"
     t.string   "webpage"
     t.datetime "created_at",         null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20171014220210) do
   create_table "principles", force: :cascade do |t|
     t.string   "title"
     t.string   "author"
-    t.string   "description"
+    t.text     "description"
     t.string   "image"
     t.string   "casestudy"
     t.string   "case_webpage"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20171014220210) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description"
     t.string   "image"
     t.string   "webpage"
     t.datetime "created_at",         null: false
