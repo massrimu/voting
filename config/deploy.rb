@@ -46,6 +46,7 @@ namespace :puma do
 
   before :start, :make_dirs
 end
+after :deploy, 'deploy:link_dependencies'
 
 namespace :deploy do
   desc "Make sure local git is in sync with remote."
@@ -57,6 +58,13 @@ namespace :deploy do
         exit
       end
     end
+  end
+  desc <<-DESC
+    Creates symbolic links to configuration files and other dependencies
+    after deployment.
+  DESC
+  task :link_dependencies, :roles => :app do
+    run "ln -nfs #{shared_path}/public/system #{release_path}/public/system"
   end
 
   desc 'Initial Deploy'
