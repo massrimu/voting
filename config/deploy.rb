@@ -46,9 +46,15 @@ namespace :puma do
 
   before :start, :make_dirs
 end
-after :deploy, 'deploy:link_dependencies'
 
 namespace :deploy do
+  desc "Creates symbolic links to public files"
+  task :link_dependencies do
+    on roles(:app) do
+      execute "ln -nfs #{shared_path}/public/system #{release_path}/public/system"
+    end
+  end
+
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
@@ -59,13 +65,7 @@ namespace :deploy do
       end
     end
   end
-  desc <<-DESC
-    Creates symbolic links to configuration files and other dependencies
-    after deployment.
-  DESC
-  task :link_dependencies, :roles => :app do
-    run "ln -nfs #{shared_path}/public/system #{release_path}/public/system"
-  end
+  
 
   desc 'Initial Deploy'
   task :initial do
@@ -86,6 +86,7 @@ namespace :deploy do
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
+  after  :deploy,       :link_dependencies
 end
 
 # ps aux | grep puma    # Get puma pid
