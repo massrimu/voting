@@ -26,7 +26,6 @@ class ImprovementsController < ApplicationController
   def create
 
     @project = Project.find(params[:project_id])
-   # @improvement = Improvement.new(improvement_params)
     @improvement = @project.improvements.create(improvement_params)
     redirect_to project_path(@project)
 
@@ -61,11 +60,11 @@ class ImprovementsController < ApplicationController
   # DELETE /improvements/1
   # DELETE /improvements/1.json
   def destroy
+    @project = Project.find(params[:project_id])
+    @improvement = @project.improvements.find(params[:id])
     @improvement.destroy
-    respond_to do |format|
-      format.html { redirect_to improvements_url, notice: 'Improvement was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to project_path(@project)
+    
   end
 
   private
@@ -76,6 +75,6 @@ class ImprovementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def improvement_params
-      params.require(:improvement).permit(:title, :author, :principle, :description)
+      params.require(:improvement).permit(:title, :author, :principle, :description, :image)
     end
 end

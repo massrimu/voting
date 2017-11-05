@@ -28,11 +28,6 @@
  
 <h2>Improvement Ideas</h2>
 
-
-<% div_for @improvements do |improvement| %>
-	<%= improvement.title %>
-	<% end %>
-
 <% @project.improvements.each do |improvement| %>
   <p>
 	<b>
@@ -52,8 +47,20 @@
 
   <p>
     <b>Description:</b>
-    <%= improvement.description %>
+    <%= simple_format(improvement.description) %>
   </p>
+
+  <p>
+      <% if improvement.image.exists? %>
+         <%= link_to (image_tag improvement.image.url(:medium), class: 'img-responsive img-thumbnail') %>
+      <% end %>
+  </p>
+
+<% if user_signed_in? %>
+    <%= link_to 'Delete Improvement', project_improvement_path(@project, improvement),
+    									method: :delete,
+    									data: { confirm: "Are you sure?"} %>
+<% end %>
 
 <% end %>
 
