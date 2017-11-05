@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171015234632) do
+ActiveRecord::Schema.define(version: 20171029214328) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -26,6 +26,20 @@ ActiveRecord::Schema.define(version: 20171015234632) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  create_table "improvements", force: :cascade do |t|
+    t.string   "title"
+    t.string   "author"
+    t.string   "principle"
+    t.text     "description"
+    t.integer  "project_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "projects_id"
+  end
+
+  add_index "improvements", ["project_id"], name: "index_improvements_on_project_id"
+  add_index "improvements", ["projects_id"], name: "index_improvements_on_projects_id"
 
   create_table "principles", force: :cascade do |t|
     t.string   "title"
@@ -72,6 +86,7 @@ ActiveRecord::Schema.define(version: 20171015234632) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "user_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :principles
 
-  resources :projects
+  resources :projects do
+    resources :improvements 
+  end
+
+  resources :principles
 
   resources :books
 

@@ -21,10 +21,48 @@
   <%= link_to 'More Information about the Project', @project.webpage %>
 </p>
 
+
 <% if user_signed_in? %>
     <%= link_to 'Edit Project', edit_project_path(@project) %>
 <% end %>
+ 
+<h2>Improvement Ideas</h2>
 
-<%= link_to 'Back', projects_path %>
+
+<% div_for @improvements do |improvement| %>
+	<%= improvement.title %>
+	<% end %>
+
+<% @project.improvements.each do |improvement| %>
+  <p>
+	<b>
+    <%= improvement.title %>
+    </b>
+  </p>
+
+  <p>
+    <b>Author:</b>
+    <%= improvement.author %>
+  </p> 
+
+  <p>
+    <b>Principle:</b>
+    <%= improvement.principle %>
+  </p>
+
+  <p>
+    <b>Description:</b>
+    <%= improvement.description %>
+  </p>
+
+<% end %>
+
+<h2>Add an improvement:</h2>
+
+<%= render "improvements/form" %>
+<p>
+<p>	
+
+<%= link_to 'Back', projects_path, class: "btn btn-primary" %>
 
 </div>

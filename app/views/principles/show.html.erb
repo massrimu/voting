@@ -25,9 +25,9 @@
 </p>
 
 <% if user_signed_in? %>
-    <%= link_to 'Edit Principle', edit_principle_path(@principle) %>
+    <%= link_to 'Edit Principle', edit_principle_path(@principle), class: "btn btn-primary" %>
 <% end %>
 
-<%= link_to 'Back', principles_path %>
+<%= link_to 'Back', principles_path, class: "btn btn-primary" %>
 
 </div>

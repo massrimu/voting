@@ -1,5 +1,6 @@
 class Principle < ActiveRecord::Base
   belongs_to :user
+  has_many :improvements
   validates_presence_of :title, :author, :description
   validates_format_of :case_webpage, :with => URI::regexp(%w(http https))
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
