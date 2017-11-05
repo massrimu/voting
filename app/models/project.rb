@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :user
+  has_many :improvements
   validates_presence_of :title,:description
   validates_format_of :webpage, :with => URI::regexp(%w(http https))
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
