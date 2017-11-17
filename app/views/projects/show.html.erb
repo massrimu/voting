@@ -31,13 +31,13 @@
 <% @project.improvements.each do |improvement| %>
   <p>
 	<b>
-    <%= improvement.title %>
+    <%= improvement.title.to_s.force_encoding("UTF-8") %>
     </b>
   </p>
 
   <p>
     <b>Author:</b>
-    <%= improvement.author %>
+    <%= improvement.author.to_s.force_encoding("UTF-8") %>
   </p> 
 
   <p>
