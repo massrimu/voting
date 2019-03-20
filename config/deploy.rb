@@ -34,6 +34,7 @@ set :rbenv_ruby, '2.2.2'
 ## Linked Files & Directories (Default None):
 # set :linked_files, %w{config/database.yml}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, fetch(:linked_dirs) + %w{public/system}
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
@@ -75,18 +76,9 @@ namespace :deploy do
     end
   end
 
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      invoke 'puma:restart'
-    end
-  end
-
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
-  after  :finishing,    :restart
-  after  :deploy,       :link_dependencies
 end
 
 # ps aux | grep puma    # Get puma pid
