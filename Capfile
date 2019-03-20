@@ -6,6 +6,7 @@ require 'capistrano/rails'
 require 'capistrano/bundler'
 require 'capistrano/rbenv'
 require 'capistrano/puma'
+install_plugin Capistrano::Puma  # Default puma tasks
 require 'capistrano/secrets_yml'
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
