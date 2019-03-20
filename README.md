@@ -29,7 +29,8 @@ get the config/secrets.yml file
 
 rails generate simple_form:installr
 
-
+# TODO
+Update gems for security issues.
 
 
 
