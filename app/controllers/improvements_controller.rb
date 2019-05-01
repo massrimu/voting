@@ -33,14 +33,14 @@ class ImprovementsController < ApplicationController
   #  respond_to do |format|
   #    if @improvement.save
   #     # format.html { redirect_to @improvement, notice: 'Improvement was successfully created.' }
- 
+
   #      format.html { redirect_to project_path (@project), notice: 'Improvement was successfully created.' }
-  #      format.json { render :show, status: :created, location: @improvement } 
+  #      format.json { render :show, status: :created, location: @improvement }
   #    else
   #      format.html { render :new }
   #      format.json { render json: @improvement.errors, status: :unprocessable_entity }
   #    end
-    
+
   end
 
   # PATCH/PUT /improvements/1
@@ -64,8 +64,13 @@ class ImprovementsController < ApplicationController
     @improvement = @project.improvements.find(params[:id])
     @improvement.destroy
     redirect_to project_path(@project)
-    
+
   end
+  def upvote
+  @improvement = Improvement.find(params[:id])
+  @improvement.votes.create
+  redirect_to(improvements_path)
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
   resources :projects do
-    resources :improvements 
+    resources :improvements do
+     member do
+    post 'upvote'
   end
+end
+end
 
   resources :principles
 

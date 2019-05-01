@@ -22,6 +22,11 @@
         <td><%= improvement.author %></td>
         <td><%= improvement.principle %></td>
         <td><%= improvement.description %></td>
+        <td><%= pluralize(improvement.votes.count, "vote") %></td>
+        <td><%= button_to '+1', upvote_improvement_path(improvement), method: :post %></td>
+        <td><%= link_to 'Show', improvement %></td>
+        <td><%= link_to 'Edit', edit_improvement_path(improvement) %></td>
+        <td><%= link_to 'Destroy', improvement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
       </tr>
     <% end %>
@@ -32,4 +37,3 @@
 
 
 </div>
-
