@@ -66,11 +66,7 @@ class ImprovementsController < ApplicationController
     redirect_to project_path(@project)
 
   end
-  def upvote
-  @improvement = Improvement.find(params[:id])
-  @improvement.votes.create
-  redirect_to(improvements_path)
-end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

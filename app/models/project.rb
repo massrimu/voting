@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  acts_as_votable
   belongs_to :user
   has_many :improvements
   validates_presence_of :title,:description

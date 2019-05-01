@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
   resources :projects do
-    resources :improvements do
+    resources :improvements
      member do
-    post 'upvote'
+       put "like", to: "projects#upvote"
+      put "dislike", to: "projects#downvote"
   end
 end
-end
+
 
   resources :principles
 

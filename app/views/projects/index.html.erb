@@ -18,7 +18,25 @@
              <%= link_to 'Edit', edit_project_path(project) %>
              <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
-        </td>
+
+        <td>  <h4>
+            Submitted <%= time_ago_in_words(project.created_at) %>
+          </h4> </td>
+        <td> <%= link_to like_project_path(project), method: :put do %>
+           Upvote 
+         <% end %>  </td>
+
+        <td> <%= link_to dislike_project_path(project), method: :put do %>
+             Downvote
+             </td>
+             <td> <br><%= link_to 'Show', project %></td>
+             <td> <br><%= link_to 'Edit', edit_project_path(project) %></td>
+             <td> <br><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+ </tr>
+<% end %>
+</td>
+
+
       </tr>
     <% end %>
   </tbody>

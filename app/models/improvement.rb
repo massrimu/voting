@@ -1,7 +1,6 @@
 class Improvement < ActiveRecord::Base
   # belongs_to :user
-  acts_as_votable
-  has_many :votes, dependent: :destroy
+  
 
   belongs_to :project
   validates_presence_of :title, :author, :description, :principle
